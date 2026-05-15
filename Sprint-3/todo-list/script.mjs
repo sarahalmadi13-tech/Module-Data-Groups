@@ -1,5 +1,6 @@
-// Store everything imported from './todos.mjs' module as properties of an object named Todos 
+// Store everything imported from './todos.mjs' module as properties of an object named Todos
 import * as Todos from "./todos.mjs";
+import { deleteCompleted } from "./todos.mjs";
 
 // To store the todo tasks
 const todos = [];
@@ -8,15 +9,22 @@ const todos = [];
 window.addEventListener("load", () => {
   document.getElementById("add-task-btn").addEventListener("click", addNewTodo);
 
+  // Set up the event listener for the "Delete Completed" button
+  document.getElementById("delete-completed").addEventListener("click", () => {
+    const updated = deleteCompleted(todos);
+    todos.length = 0; // clear original array
+    todos.push(...updated); // repopulate with remaining tasks
+    render();
+  });
+
   // Populate sample data
-  Todos.addTask(todos, "Wash the dishes", false); 
+  Todos.addTask(todos, "Wash the dishes", false);
   Todos.addTask(todos, "Do the shopping", true);
 
   render();
 });
 
-
-// A callback that reads the task description from an input field and 
+// A callback that reads the task description from an input field and
 // append a new task to the todo list.
 function addNewTodo() {
   const taskInput = document.getElementById("new-task-input");
@@ -45,12 +53,11 @@ function render() {
   });
 }
 
-
 // Note:
 // - First child of #todo-item-template is a <li> element.
 //   We will create each ToDo list item as a clone of this node.
 // - This variable is declared here to be close to the only function that uses it.
-const todoListItemTemplate = 
+const todoListItemTemplate =
   document.getElementById("todo-item-template").content.firstElementChild;
 
 // Create a <li> element for the given todo task
@@ -62,12 +69,12 @@ function createListItem(todo, index) {
     li.classList.add("completed");
   }
 
-  li.querySelector('.complete-btn').addEventListener("click", () => {
+  li.querySelector(".complete-btn").addEventListener("click", () => {
     Todos.toggleCompletedOnTask(todos, index);
     render();
   });
-    
-  li.querySelector('.delete-btn').addEventListener("click", () => {
+
+  li.querySelector(".delete-btn").addEventListener("click", () => {
     Todos.deleteTask(todos, index);
     render();
   });
