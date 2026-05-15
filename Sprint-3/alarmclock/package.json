@@ -2,16 +2,16 @@
   "name": "alarmclock",
   "version": "1.0.0",
   "license": "CC-BY-SA-4.0",
-  "description": "You must update this package",
+  "description": "A simple alarm clock app for vampires.",
   "scripts": {
     "test": "jest --config=../jest.config.js alarmclock"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/CodeYourFuture/CYF-Coursework-Template.git"
+    "url": "git+https://github.com/sarahalmadi13-tech/Module-Data-Groups.git"
   },
   "bugs": {
-    "url": "https://github.com/CodeYourFuture/CYF-Coursework-Template/issues"
+    "url": "https://github.com/sarahalmadi13-tech/Module-Data-Groups/issues"
   },
-  "homepage": "https://github.com/CodeYourFuture/CYF-Coursework-Template#readme"
+  "homepage": "https://github.com/sarahalmadi13-tech/Module-Data-Groups#readme"
 }
